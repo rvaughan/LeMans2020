@@ -19,3 +19,9 @@ data = requests.get(getUrl(base_url))
 if data.status_code == 200:
     with open('{}.json'.format(filename), 'w') as f:
         json.dump(data.json(), f)
+
+url = 'https://storage.googleapis.com/ecm-prod/assets/live/4643.json?t={}'.format(filename)
+data = requests.get(url)
+if data.status_code == 200:
+    with open('{}_status.json'.format(filename), 'w') as f:
+        json.dump(data.json(), f)
